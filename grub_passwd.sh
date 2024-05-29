@@ -21,7 +21,7 @@ edit_grub ()
 			rm $path.bak
 		fi	
 	else
-		echo "Enter username: "
+		echo "Введи имя(на английском): "
 		read username
 		sed -i.bak -e '/^$/d' -e '/^set.*$/d' -e '/^password.*$/d' $path 
 		printf "\nset superusers=\"%s\"\n" "$username" >> $path
@@ -46,10 +46,10 @@ then
 	exit 0
 fi
 
-echo -n "Enter password: "
+echo -n "Введи пароль: "
 read -s passwd1
 echo ""
-echo -n "Reenter password: "
+echo -n "Повтори пароль: "
 read -s passwd2
 echo ""
 
@@ -64,7 +64,7 @@ then
 
 	if [[ $len -gt 214 ]]
 	then
-		echo -n "Grub is already configure do want to edit (y/n/default): "
+		echo -n "Grub уже настроен, хочешь отредактировать (y/n/default): "
 		read choice
 		if [[ $choice == y ]]
 		then
@@ -76,7 +76,7 @@ then
 		edit_grub
 	fi
 else
-	echo "grub-mkpasswd-pbkdf2: error: passwords don't match."
+	echo "grub-mkpasswd-pbkdf2: error: пароли не подходят."
 fi
 
 exit 0
